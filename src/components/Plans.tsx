@@ -50,7 +50,7 @@ export default function Plans() {
           setIsVisible(true)
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     )
 
     if (sectionRef.current) {
@@ -61,22 +61,22 @@ export default function Plans() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="planos" className="py-20 bg-white">
-      <div className="max-w-[900px] mx-auto px-5 md:px-10">
+    <section ref={sectionRef} id="planos" className="py-12 md:py-20 bg-white">
+      <div className="max-w-[900px] mx-auto px-4 sm:px-6 md:px-10">
         {/* Cabeçalho */}
-        <div className={`text-center mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#1E3A5F] mb-2">
+        <div className={`text-center mb-8 md:mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#1E3A5F] mb-2">
             ENCONTRE A SUA OPÇÃO IDEAL:
           </h2>
-          <p className="text-[#6B7280] text-base">
+          <p className="text-[#6B7280] text-sm md:text-base">
             Planos pensados para suas necessidades
           </p>
         </div>
 
-        {/* Tabela de Comparação */}
-        <div className={`overflow-x-auto mb-6 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        {/* Tabela de Comparação - Desktop */}
+        <div className={`hidden md:block overflow-x-auto mb-6 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {/* Header */}
-          <div className="grid grid-cols-[1fr_1fr_1fr_1fr] gap-[2px] mb-[2px]">
+          <div className="grid grid-cols-[1.5fr_1fr_1fr_1fr] gap-[2px] mb-[2px]">
             <div className="bg-[#1E3A5F] rounded-tl-lg p-4"></div>
             {plans.map((plan, i) => (
               <div
@@ -93,7 +93,7 @@ export default function Plans() {
             {features.map((feature, idx) => (
               <div
                 key={idx}
-                className={`grid grid-cols-[1fr_1fr_1fr_1fr] gap-[2px] transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
+                className={`grid grid-cols-[1.5fr_1fr_1fr_1fr] gap-[2px] transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
                 style={{ transitionDelay: `${idx * 80 + 300}ms` }}
               >
                 <div className={`bg-[#1E3A5F] px-4 py-3 flex items-center ${idx === features.length - 1 ? 'rounded-bl-lg' : ''}`}>
@@ -120,11 +120,43 @@ export default function Plans() {
           </div>
         </div>
 
+        {/* Cards de Planos - Mobile */}
+        <div className={`md:hidden space-y-4 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {plans.map((plan, planIdx) => (
+            <div key={planIdx} className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+              {/* Header do Card */}
+              <div className="bg-[#1E3A5F] text-white text-center py-4">
+                <h3 className="text-xl font-bold">{plan}</h3>
+              </div>
+              
+              {/* Lista de Benefícios */}
+              <div className="p-4 space-y-3">
+                {features.map((feature, idx) => (
+                  <div key={idx} className="flex items-start gap-3">
+                    <div className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center ${feature.checks[planIdx] ? 'bg-[#CDFF00]' : 'bg-gray-200'}`}>
+                      {feature.checks[planIdx] ? (
+                        <svg className="w-4 h-4 text-[#1E3A5F]" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      ) : (
+                        <span className="text-gray-400 text-xs">✕</span>
+                      )}
+                    </div>
+                    <span className={`text-sm ${feature.checks[planIdx] ? 'text-[#1E3A5F]' : 'text-gray-400 line-through'}`}>
+                      {feature.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
         {/* Botão CTA */}
-        <div className={`mt-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '800ms' }}>
+        <div className={`mt-6 md:mt-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '800ms' }}>
           <a
             href="#contato"
-            className="block w-full bg-[#CDFF00] text-[#1E3A5F] font-semibold text-base text-center py-4 rounded-lg hover-glow hover-pulse hover-shine transition-all duration-300"
+            className="block w-full bg-[#CDFF00] text-[#1E3A5F] font-semibold text-sm md:text-base text-center py-3 md:py-4 rounded-lg hover-glow hover-pulse hover-shine transition-all duration-300"
           >
             Quero solicitar o meu cartão
           </a>

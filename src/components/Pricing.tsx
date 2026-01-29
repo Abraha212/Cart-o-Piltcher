@@ -13,7 +13,7 @@ export default function Pricing() {
           setIsVisible(true)
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     )
 
     if (sectionRef.current) {
@@ -30,20 +30,20 @@ export default function Pricing() {
   ]
 
   return (
-    <section ref={sectionRef} className="py-16 bg-[#1E3A5F]">
-      <div className="max-w-[1000px] mx-auto px-5 md:px-10">
+    <section ref={sectionRef} className="py-12 md:py-16 bg-[#1E3A5F]">
+      <div className="max-w-[1000px] mx-auto px-4 sm:px-6 md:px-10">
         {/* Cards de Planos */}
-        <div className="flex flex-col md:flex-row gap-4 justify-center items-stretch mb-8">
+        <div className="flex flex-col md:flex-row gap-3 md:gap-4 justify-center items-stretch mb-6 md:mb-8">
           {plans.map((plan, i) => (
             <div
               key={i}
-              className={`bg-[#CDFF00] rounded-lg px-6 py-4 flex items-center gap-4 flex-1 max-w-[340px] hover-lift hover-shine cursor-pointer transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`bg-[#CDFF00] rounded-lg px-4 md:px-6 py-3 md:py-4 flex items-center gap-3 md:gap-4 flex-1 md:max-w-[340px] hover-lift hover-shine cursor-pointer transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: `${i * 150}ms` }}
             >
-              <h3 className="text-[#1E3A5F] text-xl font-bold whitespace-nowrap">
+              <h3 className="text-[#1E3A5F] text-lg md:text-xl font-bold whitespace-nowrap">
                 {plan.name}
               </h3>
-              <p className="text-[#1E3A5F] text-sm leading-tight">
+              <p className="text-[#1E3A5F] text-xs md:text-sm leading-tight">
                 A partir de <strong>{plan.price}</strong> {plan.desc}<br />
                 {plan.extra}
               </p>
@@ -52,7 +52,7 @@ export default function Pricing() {
         </div>
 
         {/* Aviso Legal */}
-        <p className={`text-white/80 text-xs text-center max-w-3xl mx-auto leading-relaxed transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '500ms' }}>
+        <p className={`text-white/80 text-[10px] md:text-xs text-center max-w-3xl mx-auto leading-relaxed transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '500ms' }}>
           O Cartão Saúde Piltcher não é um plano de saúde. Os benefícios e gratuidades aplicam-se exclusivamente
           aos serviços prestados dentro do Hospital Piltcher, conforme condições contratuais de cada plano. Consulte
           a cobertura detalhada, carências (se aplicáveis) e regras de utilização. Valores sujeitos a alteração sem

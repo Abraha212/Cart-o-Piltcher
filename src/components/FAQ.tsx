@@ -30,7 +30,7 @@ export default function FAQ() {
           setIsVisible(true)
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     )
 
     if (sectionRef.current) {
@@ -41,13 +41,13 @@ export default function FAQ() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="duvidas" className="py-20 bg-white">
-      <div className="max-w-[900px] mx-auto px-5 md:px-20">
-        <h2 className={`text-4xl font-bold text-center text-black uppercase mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+    <section ref={sectionRef} id="duvidas" className="py-12 md:py-20 bg-white">
+      <div className="max-w-[900px] mx-auto px-4 sm:px-6 md:px-20">
+        <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-center text-black uppercase mb-8 md:mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           SUAS DÚVIDAS FREQUENTES
         </h2>
 
-        <div className="space-y-4">
+        <div className="space-y-3 md:space-y-4">
           {faqs.map((faq, i) => (
             <div
               key={i}
@@ -55,32 +55,32 @@ export default function FAQ() {
               style={{ transitionDelay: `${i * 150 + 200}ms` }}
             >
               <button
-                className="w-full flex items-center justify-between p-6 pr-8 text-left relative hover:bg-gray-50 transition-colors duration-200"
+                className="w-full flex items-center justify-between p-4 md:p-6 pr-6 md:pr-8 text-left relative hover:bg-gray-50 transition-colors duration-200"
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
               >
-                <span className="text-black text-[17px] font-semibold pr-10">
+                <span className="text-black text-sm md:text-[17px] font-semibold pr-8 md:pr-10">
                   {faq.question}
                 </span>
-                <span className="absolute right-8 text-[#6B7280] text-2xl transition-transform duration-300" style={{ transform: openIndex === i ? 'rotate(180deg)' : 'rotate(0deg)' }}>
-                  {openIndex === i ? <ChevronDown size={24} /> : <Plus size={24} />}
+                <span className="absolute right-4 md:right-8 text-[#6B7280] text-xl md:text-2xl transition-transform duration-300" style={{ transform: openIndex === i ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+                  {openIndex === i ? <ChevronDown size={20} /> : <Plus size={20} />}
                 </span>
               </button>
 
               <div
                 className={`overflow-hidden transition-all duration-300 ${openIndex === i ? 'max-h-96' : 'max-h-0'}`}
               >
-                <div className="px-8 pb-6">
-                  <p className="text-[#4B5563] text-[15px] leading-[1.7]">{faq.answer}</p>
+                <div className="px-4 md:px-8 pb-4 md:pb-6">
+                  <p className="text-[#4B5563] text-xs md:text-[15px] leading-[1.7]">{faq.answer}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className={`text-center mt-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '700ms' }}>
+        <div className={`text-center mt-8 md:mt-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '700ms' }}>
           <a
             href="#contato"
-            className="inline-block bg-[#CDFF00] text-[#1E3A5F] font-semibold text-base px-11 py-[18px] rounded-lg hover-glow hover-pulse hover-shine transition-all duration-300"
+            className="inline-block w-full sm:w-auto bg-[#CDFF00] text-[#1E3A5F] font-semibold text-sm md:text-base px-8 md:px-11 py-3 md:py-[18px] rounded-lg hover-glow hover-pulse hover-shine transition-all duration-300"
           >
             Não encontrou sua dúvida? Fale conosco
           </a>
