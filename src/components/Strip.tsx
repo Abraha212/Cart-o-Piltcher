@@ -24,10 +24,10 @@ export default function Strip() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-16 bg-gray-100">
+    <section ref={sectionRef} className="relative z-20 -mt-24 pb-10">
       <div className="max-w-[900px] mx-auto px-5 md:px-10">
-        {/* Caixa azul contida */}
-        <div className={`bg-[#1E3A5F] rounded-2xl py-12 px-8 md:px-16 text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        {/* Caixa azul contida - sobreposta à seção acima */}
+        <div className={`bg-[#1E3A5F] rounded-2xl py-12 px-8 md:px-16 text-center shadow-2xl transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-white text-2xl md:text-3xl font-bold mb-6">
             Uma nova era na saúde de Pelotas
           </h2>
