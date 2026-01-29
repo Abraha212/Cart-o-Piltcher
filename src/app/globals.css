@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Amarelos */
+  --amarelo-neon: #CDFF00;
+  --amarelo-ouro: #FFD700;
+  --verde-lima: #B8FF00;
+
+  /* Azuis */
+  --azul-escuro: #1E3A5F;
+  --azul-royal: #1E5BA8;
+  --azul-footer: #0F172A;
+
+  /* Cinzas */
+  --cinza-medio: #6B7280;
+  --cinza-escuro: #374151;
+  --cinza-texto: #4B5563;
+  --cinza-borda: #E5E7EB;
+
+  /* Básicos */
+  --preto: #000000;
+  --branco: #FFFFFF;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #1e293b;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #FFFFFF;
+  }
+}
+
+@layer components {
+  .container-custom {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .container-custom {
+      padding-left: 80px;
+      padding-right: 80px;
+    }
+  }
+}
+
+/* Suavização de transições */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrollbar customizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E3A5F;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1E5BA8;
+}
