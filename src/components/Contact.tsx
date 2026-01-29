@@ -1,6 +1,6 @@
 'use client'
 
-import { MapPin, Phone, MessageCircle, Clock } from 'lucide-react'
+import { MapPin, MessageCircle, Clock } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
 export default function Contact() {
@@ -27,7 +27,6 @@ export default function Contact() {
   const contactInfo = [
     { icon: MapPin, text: 'R. Andrade Neves, 3006 - Centro, Pelotas - RS, 96020-080' },
     { icon: Clock, text: 'Atendimento 24 horas' },
-    { icon: Phone, text: 'Telefone: (53) 3222-9999' },
     { icon: MessageCircle, text: 'WhatsApp: (53) 8100-0017' },
   ]
 
