@@ -1,54 +1,58 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#1E3A5F]">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-[#1E3A5F] shadow-lg' : 'bg-[#1E3A5F]/90 backdrop-blur-sm'}`}>
       <div className="max-w-[1200px] mx-auto px-5 md:px-20">
         <nav className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 animate-fadeIn">
             <img
               src="/logo-white.png"
               alt="Saúde Piltcher"
-              className="h-8 w-auto"
+              className="h-8 w-auto transition-transform duration-300 hover:scale-105"
             />
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#" className="text-white/80 text-[15px] hover:text-white transition-colors">
-              Início
-            </a>
-            <a href="#planos" className="text-white/80 text-[15px] hover:text-white transition-colors">
-              Planos
-            </a>
-            <a href="#beneficios" className="text-white/80 text-[15px] hover:text-white transition-colors">
-              Benefícios
-            </a>
-            <a href="#duvidas" className="text-white/80 text-[15px] hover:text-white transition-colors">
-              Dúvidas
-            </a>
-            <a href="#contato" className="text-white/80 text-[15px] hover:text-white transition-colors">
-              Contato
-            </a>
+            {['Início', 'Planos', 'Benefícios', 'Dúvidas', 'Contato'].map((item, i) => (
+              <a
+                key={item}
+                href={item === 'Início' ? '#' : `#${item.toLowerCase().replace('ú', 'u')}`}
+                className="text-white/80 text-[15px] hover:text-white transition-all duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-[#CDFF00] after:transition-all after:duration-300 hover:after:w-full"
+                style={{ animationDelay: `${i * 100}ms` }}
+              >
+                {item}
+              </a>
+            ))}
           </div>
 
           {/* CTA */}
           <a
             href="#contato"
-            className="hidden sm:inline-block bg-[#CDFF00] text-[#1E3A5F] font-semibold text-sm px-5 py-2 rounded-lg hover:opacity-90 transition-all"
+            className="hidden sm:inline-block bg-[#CDFF00] text-[#1E3A5F] font-semibold text-sm px-5 py-2 rounded-lg hover:opacity-90 hover:scale-105 transition-all duration-300"
           >
             Fale conosco
           </a>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-white"
+            className="md:hidden p-2 text-white transition-transform duration-300 hover:scale-110"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -56,24 +60,24 @@ export default function Header() {
         </nav>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-white/20">
+        <div className={`md:hidden overflow-hidden transition-all duration-300 ${isMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'}`}>
+          <div className="py-4 border-t border-white/20">
             <div className="flex flex-col gap-4">
-              <a href="#" className="text-white/80 text-[15px]" onClick={() => setIsMenuOpen(false)}>Início</a>
-              <a href="#planos" className="text-white/80 text-[15px]" onClick={() => setIsMenuOpen(false)}>Planos</a>
-              <a href="#beneficios" className="text-white/80 text-[15px]" onClick={() => setIsMenuOpen(false)}>Benefícios</a>
-              <a href="#duvidas" className="text-white/80 text-[15px]" onClick={() => setIsMenuOpen(false)}>Dúvidas</a>
-              <a href="#contato" className="text-white/80 text-[15px]" onClick={() => setIsMenuOpen(false)}>Contato</a>
+              <a href="#" className="text-white/80 text-[15px] transition-colors hover:text-white" onClick={() => setIsMenuOpen(false)}>Início</a>
+              <a href="#planos" className="text-white/80 text-[15px] transition-colors hover:text-white" onClick={() => setIsMenuOpen(false)}>Planos</a>
+              <a href="#beneficios" className="text-white/80 text-[15px] transition-colors hover:text-white" onClick={() => setIsMenuOpen(false)}>Benefícios</a>
+              <a href="#duvidas" className="text-white/80 text-[15px] transition-colors hover:text-white" onClick={() => setIsMenuOpen(false)}>Dúvidas</a>
+              <a href="#contato" className="text-white/80 text-[15px] transition-colors hover:text-white" onClick={() => setIsMenuOpen(false)}>Contato</a>
               <a
                 href="#contato"
-                className="bg-[#CDFF00] text-[#1E3A5F] text-center py-2 rounded-lg font-semibold"
+                className="bg-[#CDFF00] text-[#1E3A5F] text-center py-2 rounded-lg font-semibold hover:opacity-90 transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Fale conosco
               </a>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </header>
   )

@@ -14,7 +14,7 @@ export default function Hero() {
       {/* Conteúdo */}
       <div className="relative z-10 max-w-[1200px] mx-auto px-5 md:px-20 pt-36 pb-20">
         {/* Título */}
-        <h1 className="text-4xl md:text-[52px] font-black italic leading-[1.05] mb-8">
+        <h1 className="text-4xl md:text-[52px] font-black italic leading-[1.05] mb-8 animate-fadeInUp">
           <span className="block">
             <span className="text-[#CDFF00]">SAÚDE</span>
             <span className="text-white"> HUMANIZADA</span>
@@ -24,7 +24,7 @@ export default function Hero() {
         </h1>
 
         {/* Subtexto */}
-        <div className="text-white text-base md:text-lg leading-relaxed mb-8 max-w-xl space-y-4">
+        <div className="text-white text-base md:text-lg leading-relaxed mb-8 max-w-xl space-y-4 animate-fadeInUp delay-200" style={{ animationFillMode: 'both' }}>
           <p>
             Em Pelotas, sabemos que o acesso à saúde de qualidade nem sempre é fácil. Filas, altos custos...
           </p>
@@ -41,7 +41,8 @@ export default function Hero() {
         {/* Botão CTA */}
         <a
           href="#planos"
-          className="inline-block bg-[#CDFF00] text-[#1E3A5F] font-semibold text-base px-10 py-4 rounded-full hover:opacity-90 transition-all duration-300"
+          className="inline-block bg-[#CDFF00] text-[#1E3A5F] font-semibold text-base px-10 py-4 rounded-full hover:opacity-90 hover-glow hover-lift transition-all duration-300 animate-fadeInUp delay-400"
+          style={{ animationFillMode: 'both' }}
         >
           Quero acesso a saúde de qualidade agora
         </a>

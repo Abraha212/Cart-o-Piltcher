@@ -1,4 +1,7 @@
+'use client'
+
 import { Pill, Users, Handshake } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 
 const benefits = [
   {
@@ -28,11 +31,32 @@ const benefits = [
 ]
 
 export default function Transformation() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.2 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   const leftBenefits = benefits.filter(b => b.position === 'left')
   const rightBenefits = benefits.filter(b => b.position === 'right')
 
   return (
     <section
+      ref={sectionRef}
       id="beneficios"
       className="relative py-16 overflow-hidden"
       style={{
@@ -43,7 +67,7 @@ export default function Transformation() {
     >
       <div className="relative z-10 max-w-[1200px] mx-auto px-5 md:px-10">
         {/* Título */}
-        <div className="mb-10">
+        <div className={`mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-3xl md:text-[42px] font-black italic leading-tight">
             <span className="text-[#CDFF00]">COMO O CARTÃO</span>
             <br />
@@ -62,7 +86,8 @@ export default function Transformation() {
             {leftBenefits.map((benefit, i) => (
               <div
                 key={i}
-                className="bg-[#CDFF00] p-5 rounded-xl flex items-start gap-4"
+                className={`bg-[#CDFF00] p-5 rounded-xl flex items-start gap-4 hover-lift transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
+                style={{ transitionDelay: `${i * 200 + 200}ms` }}
               >
                 <div className="flex-shrink-0 w-12 h-12 bg-[#1E3A5F]/10 rounded-full flex items-center justify-center">
                   <benefit.icon className="w-6 h-6 text-[#1E3A5F]" />
@@ -84,7 +109,8 @@ export default function Transformation() {
             {rightBenefits.map((benefit, i) => (
               <div
                 key={i}
-                className="bg-[#CDFF00] p-5 rounded-xl flex items-start gap-4"
+                className={`bg-[#CDFF00] p-5 rounded-xl flex items-start gap-4 hover-lift transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
+                style={{ transitionDelay: `${i * 200 + 300}ms` }}
               >
                 <div className="flex-shrink-0 w-12 h-12 bg-[#1E3A5F]/10 rounded-full flex items-center justify-center">
                   <benefit.icon className="w-6 h-6 text-[#1E3A5F]" />
@@ -103,7 +129,7 @@ export default function Transformation() {
         </div>
 
         {/* RT Info */}
-        <p className="text-white/70 text-xs mt-8">
+        <p className={`text-white/70 text-xs mt-8 transition-all duration-700 delay-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           RT: Maíra Guedes Piltcher - CRM: 18548
         </p>
       </div>

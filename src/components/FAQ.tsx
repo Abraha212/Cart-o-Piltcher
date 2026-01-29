@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Plus, ChevronDown } from 'lucide-react'
 
 const faqs = [
@@ -20,11 +20,30 @@ const faqs = [
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.2 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <section id="duvidas" className="py-20 bg-white">
+    <section ref={sectionRef} id="duvidas" className="py-20 bg-white">
       <div className="max-w-[900px] mx-auto px-5 md:px-20">
-        <h2 className="text-4xl font-bold text-center text-black uppercase mb-12">
+        <h2 className={`text-4xl font-bold text-center text-black uppercase mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           SUAS DÚVIDAS FREQUENTES
         </h2>
 
@@ -32,10 +51,11 @@ export default function FAQ() {
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="bg-white border border-[#E5E7EB] rounded-lg overflow-hidden cursor-pointer transition-all duration-300"
+              className={`bg-white border border-[#E5E7EB] rounded-lg overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-lg ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${i * 150 + 200}ms` }}
             >
               <button
-                className="w-full flex items-center justify-between p-6 pr-8 text-left relative hover:bg-gray-50"
+                className="w-full flex items-center justify-between p-6 pr-8 text-left relative hover:bg-gray-50 transition-colors duration-200"
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
               >
                 <span className="text-black text-[17px] font-semibold pr-10">
@@ -57,10 +77,10 @@ export default function FAQ() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className={`text-center mt-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '700ms' }}>
           <a
             href="#contato"
-            className="inline-block bg-[#CDFF00] text-[#1E3A5F] font-semibold text-base px-11 py-[18px] rounded-lg hover:opacity-90 transition-all duration-300"
+            className="inline-block bg-[#CDFF00] text-[#1E3A5F] font-semibold text-base px-11 py-[18px] rounded-lg hover:opacity-90 hover-glow transition-all duration-300"
           >
             Não encontrou sua dúvida? Fale conosco
           </a>
