@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/40 md:bg-black/35"></div>
 
       {/* Conteúdo */}
-      <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 md:px-20 pt-24 sm:pt-32 md:pt-36 pb-16 md:pb-20">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 md:px-20 pt-24 sm:pt-32 md:pt-36 pb-32 sm:pb-36 md:pb-40">
         {/* Título */}
         <h1 className="text-3xl sm:text-4xl md:text-[52px] font-black italic leading-[1.1] mb-6 md:mb-8 animate-fadeInUp">
           <span className="block">

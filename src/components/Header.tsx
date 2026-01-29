@@ -3,6 +3,14 @@
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 
+const navLinks = [
+  { label: 'Início', href: '#' },
+  { label: 'Planos', href: '#planos' },
+  { label: 'Benefícios', href: '#beneficios' },
+  { label: 'Dúvidas', href: '#duvidas' },
+  { label: 'Contato', href: '#contato' },
+]
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -30,14 +38,14 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {['Início', 'Planos', 'Benefícios', 'Dúvidas', 'Contato'].map((item, i) => (
+            {navLinks.map((link, i) => (
               <a
-                key={item}
-                href={item === 'Início' ? '#' : `#${item.toLowerCase().replace('ú', 'u')}`}
+                key={link.label}
+                href={link.href}
                 className="text-white/80 text-[15px] hover:text-white transition-all duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-[#CDFF00] after:transition-all after:duration-300 hover:after:w-full"
                 style={{ animationDelay: `${i * 100}ms` }}
               >
-                {item}
+                {link.label}
               </a>
             ))}
           </div>
@@ -63,11 +71,16 @@ export default function Header() {
         <div className={`md:hidden overflow-hidden transition-all duration-300 ${isMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'}`}>
           <div className="py-4 border-t border-white/20">
             <div className="flex flex-col gap-4">
-              <a href="#" className="text-white/80 text-[15px] transition-colors hover:text-white" onClick={() => setIsMenuOpen(false)}>Início</a>
-              <a href="#planos" className="text-white/80 text-[15px] transition-colors hover:text-white" onClick={() => setIsMenuOpen(false)}>Planos</a>
-              <a href="#beneficios" className="text-white/80 text-[15px] transition-colors hover:text-white" onClick={() => setIsMenuOpen(false)}>Benefícios</a>
-              <a href="#duvidas" className="text-white/80 text-[15px] transition-colors hover:text-white" onClick={() => setIsMenuOpen(false)}>Dúvidas</a>
-              <a href="#contato" className="text-white/80 text-[15px] transition-colors hover:text-white" onClick={() => setIsMenuOpen(false)}>Contato</a>
+              {navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-white/80 text-[15px] transition-colors hover:text-white"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
               <a
                 href="#contato"
                 className="bg-[#CDFF00] text-[#1E3A5F] text-center py-2 rounded-lg font-semibold hover:opacity-90 transition-all"
