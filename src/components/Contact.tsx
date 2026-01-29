@@ -74,7 +74,7 @@ export default function Contact() {
               href="https://wa.me/5553999999999"
               target="_blank"
               rel="noopener noreferrer"
-              className={`block w-full text-center bg-[#CDFF00] text-[#1E3A5F] font-semibold text-base py-[18px] rounded-lg hover:opacity-90 hover-glow transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              className={`block w-full text-center bg-[#CDFF00] text-[#1E3A5F] font-semibold text-base py-[18px] rounded-lg hover-glow hover-pulse hover-shine transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transitionDelay: '800ms' }}
             >
               Quero meu cartão agora

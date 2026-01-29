@@ -41,7 +41,7 @@ export default function Hero() {
         {/* Botão CTA */}
         <a
           href="#planos"
-          className="inline-block bg-[#CDFF00] text-[#1E3A5F] font-semibold text-base px-10 py-4 rounded-full hover:opacity-90 hover-glow hover-lift transition-all duration-300 animate-fadeInUp delay-400"
+          className="inline-block bg-[#CDFF00] text-[#1E3A5F] font-semibold text-base px-10 py-4 rounded-full hover-glow hover-pulse hover-shine transition-all duration-300 animate-fadeInUp delay-400"
           style={{ animationFillMode: 'both' }}
         >
           Quero acesso a saúde de qualidade agora

@@ -86,7 +86,7 @@ export default function Transformation() {
             {leftBenefits.map((benefit, i) => (
               <div
                 key={i}
-                className={`bg-[#CDFF00] p-5 rounded-xl flex items-start gap-4 hover-lift transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
+                className={`bg-[#CDFF00] p-5 rounded-xl flex items-start gap-4 hover-lift hover-shine cursor-pointer transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
                 style={{ transitionDelay: `${i * 200 + 200}ms` }}
               >
                 <div className="flex-shrink-0 w-12 h-12 bg-[#1E3A5F]/10 rounded-full flex items-center justify-center">
@@ -109,7 +109,7 @@ export default function Transformation() {
             {rightBenefits.map((benefit, i) => (
               <div
                 key={i}
-                className={`bg-[#CDFF00] p-5 rounded-xl flex items-start gap-4 hover-lift transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
+                className={`bg-[#CDFF00] p-5 rounded-xl flex items-start gap-4 hover-lift hover-shine cursor-pointer transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
                 style={{ transitionDelay: `${i * 200 + 300}ms` }}
               >
                 <div className="flex-shrink-0 w-12 h-12 bg-[#1E3A5F]/10 rounded-full flex items-center justify-center">

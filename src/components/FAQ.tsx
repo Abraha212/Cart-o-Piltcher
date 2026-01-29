@@ -80,7 +80,7 @@ export default function FAQ() {
         <div className={`text-center mt-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '700ms' }}>
           <a
             href="#contato"
-            className="inline-block bg-[#CDFF00] text-[#1E3A5F] font-semibold text-base px-11 py-[18px] rounded-lg hover:opacity-90 hover-glow transition-all duration-300"
+            className="inline-block bg-[#CDFF00] text-[#1E3A5F] font-semibold text-base px-11 py-[18px] rounded-lg hover-glow hover-pulse hover-shine transition-all duration-300"
           >
             Não encontrou sua dúvida? Fale conosco
           </a>

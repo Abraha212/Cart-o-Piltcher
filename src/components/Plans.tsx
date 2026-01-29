@@ -124,7 +124,7 @@ export default function Plans() {
         <div className={`mt-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '800ms' }}>
           <a
             href="#contato"
-            className="block w-full bg-[#CDFF00] text-[#1E3A5F] font-semibold text-base text-center py-4 rounded-lg hover:opacity-90 hover-glow transition-all duration-300"
+            className="block w-full bg-[#CDFF00] text-[#1E3A5F] font-semibold text-base text-center py-4 rounded-lg hover-glow hover-pulse hover-shine transition-all duration-300"
           >
             Quero solicitar o meu cartão
           </a>

@@ -1,18 +1,47 @@
+'use client'
+
 import { Heart, DollarSign, Building2 } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function About() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.2 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  const benefits = [
+    { icon: Heart, title: 'Atendimento Humanizado', desc: 'Respeito e atenção em cada consulta' },
+    { icon: DollarSign, title: 'Valores Acessíveis', desc: 'Saúde de qualidade que cabe no seu orçamento' },
+    { icon: Building2, title: 'Hospital de Excelência', desc: 'Estrutura completa para você e sua família' },
+  ]
+
   return (
-    <section className="bg-white py-20">
+    <section ref={sectionRef} className="bg-white py-20">
       <div className="max-w-[1200px] mx-auto px-5 md:px-20">
         <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] gap-12 items-center">
           {/* Imagem - Esquerda */}
           <div
-            className="h-[400px] lg:h-[600px] w-full bg-cover bg-center rounded-xl"
+            className={`h-[400px] lg:h-[600px] w-full bg-cover bg-center rounded-xl hover-zoom transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
             style={{ backgroundImage: 'url(/nurse-arm.png)' }}
           />
 
           {/* Conteúdo - Direita */}
-          <div>
+          <div className={`transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
             {/* Título */}
             <h2 className="text-[38px] font-bold leading-[1.2] mb-2">
               <span className="text-black">CHEGA DE ESCOLHER ENTRE</span>
@@ -27,35 +56,26 @@ export default function About() {
 
             {/* Cards de Benefícios */}
             <div className="flex flex-col gap-4 mb-9">
-              <div className="flex items-center gap-[18px] bg-[#1E3A5F] px-6 py-5 rounded-[10px]">
-                <Heart className="w-7 h-7 text-white flex-shrink-0" />
-                <div>
-                  <h3 className="text-white text-[17px] font-bold mb-[3px]">Atendimento Humanizado</h3>
-                  <p className="text-white/90 text-sm">Respeito e atenção em cada consulta</p>
+              {benefits.map((benefit, i) => (
+                <div
+                  key={i}
+                  className={`flex items-center gap-[18px] bg-[#1E3A5F] px-6 py-5 rounded-[10px] hover-lift hover-shine cursor-pointer transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                  style={{ transitionDelay: `${i * 150 + 400}ms` }}
+                >
+                  <benefit.icon className="w-7 h-7 text-white flex-shrink-0 hover-rotate transition-transform duration-300" />
+                  <div>
+                    <h3 className="text-white text-[17px] font-bold mb-[3px]">{benefit.title}</h3>
+                    <p className="text-white/90 text-sm">{benefit.desc}</p>
+                  </div>
                 </div>
-              </div>
-
-              <div className="flex items-center gap-[18px] bg-[#1E3A5F] px-6 py-5 rounded-[10px]">
-                <DollarSign className="w-7 h-7 text-white flex-shrink-0" />
-                <div>
-                  <h3 className="text-white text-[17px] font-bold mb-[3px]">Valores Acessíveis</h3>
-                  <p className="text-white/90 text-sm">Saúde de qualidade que cabe no seu orçamento</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-[18px] bg-[#1E3A5F] px-6 py-5 rounded-[10px]">
-                <Building2 className="w-7 h-7 text-white flex-shrink-0" />
-                <div>
-                  <h3 className="text-white text-[17px] font-bold mb-[3px]">Hospital de Excelência</h3>
-                  <p className="text-white/90 text-sm">Estrutura completa para você e sua família</p>
-                </div>
-              </div>
+              ))}
             </div>
 
             {/* Botão */}
             <a
               href="#planos"
-              className="block w-full text-center bg-[#CDFF00] text-[#1E3A5F] font-semibold text-base py-[18px] rounded-lg hover:opacity-90 transition-all duration-300"
+              className={`block w-full text-center bg-[#CDFF00] text-[#1E3A5F] font-semibold text-base py-[18px] rounded-lg hover-glow hover-pulse transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              style={{ transitionDelay: '850ms' }}
             >
               Quero Saber Mais
             </a>
