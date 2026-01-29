@@ -52,7 +52,9 @@ export default function Header() {
 
           {/* CTA */}
           <a
-            href="#contato"
+            href="https://wa.me/555381000017"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden sm:inline-block bg-[#CDFF00] text-[#1E3A5F] font-semibold text-sm px-5 py-2 rounded-lg hover:opacity-90 hover:scale-105 transition-all duration-300"
           >
             Fale conosco
@@ -82,7 +84,9 @@ export default function Header() {
                 </a>
               ))}
               <a
-                href="#contato"
+                href="https://wa.me/555381000017"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-[#CDFF00] text-[#1E3A5F] text-center py-2 rounded-lg font-semibold hover:opacity-90 transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >

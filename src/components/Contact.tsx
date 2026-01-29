@@ -28,7 +28,7 @@ export default function Contact() {
     { icon: MapPin, text: 'R. Andrade Neves, 3006 - Centro, Pelotas - RS, 96020-080' },
     { icon: Clock, text: 'Atendimento 24 horas' },
     { icon: Phone, text: 'Telefone: (53) 3222-9999' },
-    { icon: MessageCircle, text: 'WhatsApp: (53) 99999-9999' },
+    { icon: MessageCircle, text: 'WhatsApp: (53) 8100-0017' },
   ]
 
   return (
@@ -71,7 +71,7 @@ export default function Contact() {
 
             {/* Botão */}
             <a
-              href="https://wa.me/5553999999999"
+              href="https://wa.me/555381000017"
               target="_blank"
               rel="noopener noreferrer"
               className={`block w-full text-center bg-[#CDFF00] text-[#1E3A5F] font-semibold text-sm md:text-base py-3 md:py-[18px] rounded-lg hover-glow hover-pulse hover-shine transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}

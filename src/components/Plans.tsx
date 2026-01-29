@@ -155,7 +155,9 @@ export default function Plans() {
         {/* Botão CTA */}
         <div className={`mt-6 md:mt-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '800ms' }}>
           <a
-            href="#contato"
+            href="https://wa.me/555381000017"
+            target="_blank"
+            rel="noopener noreferrer"
             className="block w-full bg-[#CDFF00] text-[#1E3A5F] font-semibold text-sm md:text-base text-center py-3 md:py-4 rounded-lg hover-glow hover-pulse hover-shine transition-all duration-300"
           >
             Quero solicitar o meu cartão

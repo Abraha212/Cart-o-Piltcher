@@ -35,7 +35,9 @@ export default function Strip() {
             Entendemos como pode ser frustrante lidar com a saúde. A espera, a incerteza, a falta de atenção... No Hospital Piltcher, estamos aqui para mudar isso. Oferecemos uma gama completa de serviços para cuidar de você, com o carinho e a atenção que você merece:
           </p>
           <a
-            href="#contato"
+            href="https://wa.me/555381000017"
+            target="_blank"
+            rel="noopener noreferrer"
             className={`block w-full max-w-[400px] md:max-w-[500px] mx-auto bg-[#CDFF00] text-[#1E3A5F] font-semibold text-sm md:text-base py-3 md:py-4 rounded-lg hover-glow hover-pulse hover-shine transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
             style={{ transitionDelay: '300ms' }}
           >
