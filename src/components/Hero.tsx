@@ -41,7 +41,9 @@ export default function Hero() {
 
         {/* Botão CTA */}
         <a
-          href="#planos"
+          href="https://wa.me/555381000017"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-block w-full sm:w-auto text-center bg-[#CDFF00] text-[#1E3A5F] font-semibold text-sm sm:text-base px-6 sm:px-10 py-3 sm:py-4 rounded-full hover-glow hover-pulse hover-shine transition-all duration-300 animate-fadeInUp delay-400"
           style={{ animationFillMode: 'both' }}
         >

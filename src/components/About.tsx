@@ -73,7 +73,9 @@ export default function About() {
 
             {/* Botão */}
             <a
-              href="#planos"
+              href="https://wa.me/555381000017"
+              target="_blank"
+              rel="noopener noreferrer"
               className={`block w-full text-center bg-[#CDFF00] text-[#1E3A5F] font-semibold text-sm md:text-base py-3 md:py-[18px] rounded-lg hover-glow hover-pulse transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transitionDelay: '850ms' }}
             >
